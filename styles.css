@@ -8,6 +8,7 @@ text-align: center;
 .appRows:hover{
     background-color: rgb(205, 210, 212);
     opacity: 50%;
+    border-radius: 10px;
     
 }
 .appRowsHeader{
