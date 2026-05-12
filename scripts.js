@@ -39,3 +39,18 @@ function Person(first, last, age, eye){
 
 const myFriend=new Person("nick","coccie",23,"blue");
 document.getElementById("js6").innerHTML="My friend is " + myFriend.age + ".";
+
+const numbers = [1,2,3,4,5];
+let nums = "";
+for (let x in numbers){
+    nums += x + " ";
+}
+document.getElementById("js7").innerHTML=nums;
+
+console.log("Suvrat eats dookie");
+
+let x = 10.4;
+document.getElementById("js8").innerHTML=Math.trunc(x);
+
+const xy="burger boy"
+document.getElementById("js9").innerHTML=typeof xy;
