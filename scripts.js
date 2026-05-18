@@ -54,3 +54,6 @@ document.getElementById("js8").innerHTML=Math.trunc(x);
 
 const xy="burger boy"
 document.getElementById("js9").innerHTML=typeof xy;
+
+document.getElementById("js10").innerHTML= "input and error test"
+

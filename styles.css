@@ -102,3 +102,23 @@ margin-top: 40px;
 text-align: center;
 font-size: 20px;
 }
+#js10{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js11{
+font-size: 20px;
+display: block;
+margin: auto;
+width: min(90%, 400px);
+}
+#js11::placeholder{
+font-style: italic;
+}
+#js12{
+margin-top: 40px;
+font-size: 20px;
+display: block;
+margin: auto;
+}
