@@ -57,3 +57,23 @@ document.getElementById("js9").innerHTML=typeof xy;
 
 document.getElementById("js10").innerHTML= "input and error test"
 
+function checkNumber(){
+    debugger
+    if (document.getElementById("js11").value>5){
+        document.getElementById("js10").innerHTML= "Number is greater than 5";
+    } else{ 
+        document.getElementById("js10").innerHTML= "Number is less than 5";
+    }
+}
+
+async function getJoke(){
+    try {
+        let response = await fetch("https://official-joke-api.appspot.com/random_joke");
+        let data = await response.json();
+        document.getElementById("js13").innerHTML=data.setup + " "+ data.punchline;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+document.getElementById("js14").addEventListener("click", getJoke);
