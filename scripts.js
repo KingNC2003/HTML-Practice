@@ -77,3 +77,5 @@ async function getJoke(){
 }
 
 document.getElementById("js14").addEventListener("click", getJoke);
+document.getElementById("js14").addEventListener("click",()=>{document.getElementById("js14").style.color="red"});
+document.addEventListener("mousemove",(event)=>{ document.getElementById("js15").innerHTML="X: " + event.clientX + "Y: " + event.clientY})
