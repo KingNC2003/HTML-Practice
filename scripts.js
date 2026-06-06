@@ -78,4 +78,30 @@ async function getJoke(){
 
 document.getElementById("js14").addEventListener("click", getJoke);
 document.getElementById("js14").addEventListener("click",()=>{document.getElementById("js14").style.color="red"});
-document.addEventListener("mousemove",(event)=>{ document.getElementById("js15").innerHTML="X: " + event.clientX + "Y: " + event.clientY})
+document.addEventListener("mousemove",(event)=>{ document.getElementById("js15").innerHTML="X: " + event.clientX + "Y: " + event.clientY});
+
+const person1 = {
+    name: "John"
+}
+const person2 = {
+    name: "Paul" 
+};
+const person3 = {
+    name: "Ringo" 
+};
+
+function greet(greeting){
+    return greeting + " " + this.name;
+}
+
+let message = greet.call(person3, "Hello");
+document.getElementById("js16").innerHTML=message;
+
+let promise = new Promise(function(resolve,reject){
+    resolve("Hello");
+});
+
+let ptest = promise.then((value)=>{
+    document.getElementById("js17").innerHTML=value;
+})
+
