@@ -1,4 +1,5 @@
 "use strict";
+import {displayName} from "./moduleTest.js";
 
 const text=`<h2>Javascript Practice Below...Please dont bully me</h2>`;
 document.getElementById("js1").innerHTML=text;
@@ -105,3 +106,9 @@ let ptest = promise.then((value)=>{
     document.getElementById("js17").innerHTML=value;
 })
 
+document.getElementById("js18").innerHTML=displayName("BurgerBoy");
+
+let leng = window.innerHeight;
+let widt = window.innerWidth;
+
+document.getElementById("js19").innerHTML=leng+" " +widt;
