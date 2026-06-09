@@ -112,3 +112,12 @@ let leng = window.innerHeight;
 let widt = window.innerWidth;
 
 document.getElementById("js19").innerHTML=leng+" " +widt;
+document.cookie = "fart=poop";
+console.log(document.cookie);
+
+let cookie = document.cookie;
+document.getElementById("js20").innerHTML=cookie;
+
+localStorage.setItem("burger", "boy");
+
+document.getElementById("js21").innerHTML = localStorage.getItem("burger");
