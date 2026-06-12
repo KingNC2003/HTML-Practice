@@ -1,0 +1,190 @@
+body {
+background-color: rgb(235, 236, 228);
+}
+h1 {
+color: rgb(63, 121, 101);
+text-align: center;
+}
+.appRows:hover{
+    background-color: rgb(205, 210, 212);
+    opacity: 50%;
+    border-radius: 10px;
+    
+}
+.appRowsHeader{
+
+}
+.forHelp {
+    color:rgb(241, 106, 106);
+    font-size: medium;
+    font-family:'Lucida Sans';
+    text-align: left;
+    border: 1px solid;
+    border-radius: 10px;
+    padding:10px;
+    width: 26%;
+    text-align: center;
+}
+nav {
+    width: 70%;
+    height: inherit;
+    margin-top: 200px;
+    margin-bottom: 20px;
+    border: 2px;
+    padding: 1px;
+    border-color:rgb(73, 70, 70);
+    border-left-style:hidden;
+    border-right-style:hidden;
+    border-top-style:hidden;
+    border-bottom-style:solid;
+    font-family: 'Lucida Sans';
+}
+.logo{
+    width: 350px;
+}
+.header {
+    display: flex;
+}
+nav a:link {
+    color:black;
+    text-decoration: none;
+}
+nav a:hover {
+    background-color: rgb(205, 210, 212);
+    opacity: 50%;
+    border-radius: 5px;
+}
+nav a:visited{
+    color:black;
+    text-decoration: none;
+}
+#js1, #ts1{
+margin-top: 40px;
+text-align: center;
+}
+#js2{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js3{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js4{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js5{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js6{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js7{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js8{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js9{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js10{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js11{
+font-size: 20px;
+display: block;
+margin: auto;
+width: min(90%, 400px);
+}
+#js11::placeholder{
+font-style: italic;
+}
+#js12{
+margin-top: 40px;
+font-size: 20px;
+display: block;
+margin: auto;
+}
+#js13{
+font: italic;
+text-align: center;
+}
+#js14{
+margin-top: 40px;
+font-size: 20px;
+display: block;
+margin: auto;
+}
+#js15{
+font: italic;
+text-align: center;
+}
+#js16{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js17{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js18{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js19{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js20{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js21{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js22{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+margin: 40px auto;
+display: block;
+}
+#js23{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js24{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
+#js25{
+margin-top: 40px;
+text-align: center;
+font-size: 20px;
+}
