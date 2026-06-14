@@ -21,4 +21,4 @@ const car: Car = {
     
 }
 
-document.getElementById("ts3")!.innerHTML = car?.year;
+document.getElementById("ts3")!.innerHTML = String(car.year);
