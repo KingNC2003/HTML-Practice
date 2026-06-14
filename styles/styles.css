@@ -62,12 +62,12 @@ nav a:visited{
 margin-top: 40px;
 text-align: center;
 }
-#js2{
+#js2, #ts2{
 margin-top: 40px;
 text-align: center;
 font-size: 20px;
 }
-#js3{
+#js3, #ts3{
 margin-top: 40px;
 text-align: center;
 font-size: 20px;
