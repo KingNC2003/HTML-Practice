@@ -61,6 +61,7 @@ nav a:visited{
 #js1, #ts1{
 margin-top: 40px;
 text-align: center;
+font-size: 20px;
 }
 #js2, #ts2{
 margin-top: 40px;
@@ -72,37 +73,37 @@ margin-top: 40px;
 text-align: center;
 font-size: 20px;
 }
-#js4{
+#js4, #ts4{
 margin-top: 40px;
 text-align: center;
 font-size: 20px;
 }
-#js5{
+#js5, #ts5{
 margin-top: 40px;
 text-align: center;
 font-size: 20px;
 }
-#js6{
+#js6, #ts6{
 margin-top: 40px;
 text-align: center;
 font-size: 20px;
 }
-#js7{
+#js7, #ts7{
 margin-top: 40px;
 text-align: center;
 font-size: 20px;
 }
-#js8{
+#js8, #ts8{
 margin-top: 40px;
 text-align: center;
 font-size: 20px;
 }
-#js9{
+#js9, #ts9{
 margin-top: 40px;
 text-align: center;
 font-size: 20px;
 }
-#js10{
+#js10, #ts10{
 margin-top: 40px;
 text-align: center;
 font-size: 20px;
