@@ -255,3 +255,142 @@ function createLoggedPair<S extends string | number, T extends string | number>(
 }
 
 // Utility types
+interface UtilType1 {
+    x: number;
+    y: number;
+}
+    // Partial - All properties optional
+let utilType1: Partial<UtilType1> = {};
+utilType1.x=3;
+
+    // Required - All properties required
+interface UtilType2 {
+    make: string;
+    model: string;
+    mileage?: number;
+}
+let utilType2: Required<UtilType2> = {
+    make: "Ford",
+    model: "Mustang",
+    mileage: 20000
+}
+
+    // Record same as key - value pair... equal to { [key: string]: number }
+const nameAge: Record<string,number> = {
+    "nick":20
+}
+console.log(nameAge);
+
+    // Omit - Remove keys from an object type
+interface OmitTest{
+    name: string;
+    age: number;
+}
+const omitTest: Omit<OmitTest, "age"> = {
+    name: "frank"
+}
+console.log( omitTest.name);
+
+    // Pick - Removes all but the specified property
+interface PickTest {
+    name: string;
+    age: number;
+}
+const pickTest: Pick<PickTest, "name"> = {
+    name: "Farqueveuos",
+}
+console.log(pickTest.name);
+
+    // Exclude - Removes types from a union
+type Primitive = string | number | boolean
+const value: Exclude<Primitive, string> = true;
+
+    // ReturnType - Extracts the return type of a function
+type PointGenerator = () => { x: number; y: number; };
+const point: ReturnType<PointGenerator> = {
+  x: 10,
+  y: 20
+};
+
+    // Parameters - Extracts parameter types of a function as array
+type PointPrinter = (p: { x: number; y: number; }) => void;
+const point34: Parameters<PointPrinter>[0] = {
+  x: 10,
+  y: 20
+};
+
+    // Readonly - Is used to create a new type where all properties are readonly
+interface Person55 {
+  name: string;
+  age: number;
+}
+const person55: Readonly<Person55> = {
+  name: "Dylan",
+  age: 35,
+};
+
+// Keyof - Keyof Person means “only allow property names that exist on Person,”
+interface KeyOfTest{
+    x: string;
+    y: string;
+}
+function keyofTest(x: KeyOfTest, property: keyof KeyOfTest): void{
+    console.log(`Printing person property ${x}: "${x[property]}"`);
+}
+let person123 = {
+  x: "Max",
+  y: "farter"
+};
+keyofTest(person123, "x");
+    // With index signatures
+type StringMap = { [key: string]: unknown };
+// `keyof StringMap` resolves to `string` here
+function createStringPair(property: keyof StringMap, value: string): StringMap {
+  return { [property]: value };
+}
+
+// Null and undefined
+    // Types
+    let value99: string | undefined | null = null;
+    value99 = "hello";
+    value99 = undefined;
+
+    // Optional chaining
+
+    interface House {
+        sqft: number;
+        yard?: {sqft: number};
+    }
+    
+    function printYardSize (house: House): void{
+        const yardSize = house.yard?.sqft;
+        if (yardSize===undefined){
+            console.log("No yard")
+        }else {
+            console.log(`Yard is ${yardSize} sqft`);
+        }
+    }
+    let home432: House = {
+        sqft: 554
+    }
+    printYardSize(home432);
+
+    // Nullish coalescing
+    function printMileage(mileage: number | null | undefined){
+        console.log(`Mileage: ${mileage ?? "Not available"}`)
+    }
+    printMileage(null);
+    printMileage(0);
+
+    // Null assertion
+    function getValue1(): string | undefined {
+        return 'hello';
+    }
+    let value11 = getValue1();
+    console.log('value length: ' + value11!.length);
+
+    // Array bounds handling
+        //Even with strictNullChecks enabled, by default TypeScript assumes array access will never return undefined (unless undefined is part of the array type).
+        // The config noUncheckedIndexedAccess can be used to change this behavior.
+        let array112: number[] = [1, 2, 3];
+        let value321 = array112[0]; // with `noUncheckedIndexedAccess` this has the type `number | undefined`
