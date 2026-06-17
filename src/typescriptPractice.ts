@@ -390,7 +390,50 @@ function createStringPair(property: keyof StringMap, value: string): StringMap {
     console.log('value length: ' + value11!.length);
 
     // Array bounds handling
-        //Even with strictNullChecks enabled, by default TypeScript assumes array access will never return undefined (unless undefined is part of the array type).
+        // Even with strictNullChecks enabled, by default TypeScript assumes array access will never return undefined (unless undefined is part of the array type).
         // The config noUncheckedIndexedAccess can be used to change this behavior.
         let array112: number[] = [1, 2, 3];
         let value321 = array112[0]; // with `noUncheckedIndexedAccess` this has the type `number | undefined`
+
+// Definitely typed
+    // Using untyped NPM packages with TypeScript is not type-safe because types are missing.
+    // To help TypeScript developers use such packages, there is a community-maintained project called Definitely Typed.
+    // Definitely Typed is a project that provides a central repository of TypeScript definitions for NPM packages which do not have types.
+
+    // npm install --save-dev @types/jquery
+
+// TypeScript Configuration
+    // The tsconfig.json file is the heart of every TypeScript project.
+    // It tells the TypeScript compiler how to process your code, which files to include, and which features to enable or disable.
+    // A well-configured tsconfig.json ensures a smooth developer experience and reliable builds.
+
+    // Key Concepts & Explanations
+        // compilerOptions: Controls how TypeScript compiles your code (e.g., target, module, strictness).
+        // include: Files or folders to include in the compilation.
+        // exclude: Files or folders to exclude.
+        // files: Explicit list of files to include (rarely used with include).
+        // extends: Inherit options from another config file.
+        // references: Enable project references for monorepos or multi-package setups.
+
+    // Examples    
+        // Minimal tsconfig.jsonGet your own TypeScript Server
+            // {
+            // "compilerOptions": {
+                // "target": "es6",
+                // "module": "commonjs"
+            // },
+            // "include": ["src/**/*"]
+            // }
+
+        // Generate tsconfig.json file
+            // tsc --init
+
+    // Monorepo: Use references and extends to share settings across packages.
+    // Library: Set declaration and outDir for type definitions.
+    // App: Use strict and esModuleInterop for best compatibility.
+
+    // Common Pitfalls & Troubleshooting
+        // Misconfigured include/exclude can cause files to be missed or included unexpectedly.
+        // Paths not resolving? Check baseUrl and paths settings.
+        // Type errors after changing strict? Review your code for type safety.
+        
