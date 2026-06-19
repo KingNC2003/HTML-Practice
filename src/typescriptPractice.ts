@@ -438,5 +438,16 @@ function createStringPair(property: keyof StringMap, value: string): StringMap {
     
 
 
-    // Advanced Types
-    
+    // Type guards
+        // Typeof
+            function formatValue(value: string | number): string{
+                if (typeof value==="string"){
+                    return value.trim().toUpperCase();
+                }else {
+                    return value.toFixed(2);
+                }
+            }
+            const result324 = formatValue('  hello  ');
+            const result254 = formatValue(42.1234);
+            
+        
