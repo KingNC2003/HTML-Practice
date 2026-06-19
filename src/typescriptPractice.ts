@@ -165,7 +165,6 @@ const person2 = new Person("Anna");
 console.log(person2.getName());
 
     // class can implement a interface and/or extend another class
-
 class foodNV {
     public name: string;
     public meat: boolean;
@@ -239,10 +238,10 @@ class namedValue<T>{
         return this.value;
      }
 }
-const genTest = new namedValue("rickulous");
+const genTest = new namedValue<number>("rickulous");
 genTest.setValue(5);
 const finGTest = genTest.getValue();
-document.getElementById("ts26")!.innerHTML = finGTest as string;
+document.getElementById("ts26")!.innerHTML = String(finGTest);
 
     // Types alias // can do <T=string or whatever> to set defualt
 type Wrapped<T> = { value: T };
@@ -356,7 +355,6 @@ function createStringPair(property: keyof StringMap, value: string): StringMap {
     value99 = undefined;
 
     // Optional chaining
-
     interface House {
         sqft: number;
         yard?: {sqft: number};
@@ -437,3 +435,8 @@ function createStringPair(property: keyof StringMap, value: string): StringMap {
         // Paths not resolving? Check baseUrl and paths settings.
         // Type errors after changing strict? Review your code for type safety.
         
+    
+
+
+    // Advanced Types
+    
