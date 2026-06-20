@@ -450,4 +450,354 @@ function createStringPair(property: keyof StringMap, value: string): StringMap {
             const result324 = formatValue('  hello  ');
             const result254 = formatValue(42.1234);
             
+        // Instanceof
+            class bird{
+                fly():void{
+                    console.log("Flying...");
+                }
+            }
+
+            class fish{
+                swim(): void{
+                    console.log("Swimming...");
+                }
+            }
+
+            function move(animal: bird | fish): void{
+                if (animal instanceof bird){
+                    animal.fly();
+                }else {
+                    animal.swim();
+                }
+            }
+
+            // User defined type guards
+
+            interface Car321 {
+                make: string;
+                model: string;
+                year: number;
+            }
+
+            interface Motorcycle {
+                make: string;
+                model: string;
+                year: number;
+                type: "Sport" | "Cruiser"
+            }
+
+            function isCar(vehicle: Car321 | Motorcycle): vehicle is Car321{
+                return (vehicle as Motorcycle).type === undefined;
+            }
+
+            function displayVehicleInfo(vehicle: Car321 | Motorcycle) {
+                console.log(`Make: ${vehicle.make}, Model: ${vehicle.model}, Year: ${vehicle.year}`);
+                if (isCar(vehicle)) {
+                    console.log("This is a car");
+                } else {
+                    console.log(`This is a ${(vehicle as Motorcycle).type} motorcycle`);
+                }
+            }
+
+            const car321 = {
+                make: "Toyota",
+                model: "Camry",
+                year: 2022
+            };
+
+            const motorcycle = {
+                make: "Harley-Davidson",
+                model: "Street Glide",
+                year: 2021,
+                type: "Cruiser"
+            };
+
+            displayVehicleInfo(car321);
+            displayVehicleInfo(motorcycle);
+
+            // Discriminated unions
+
+            interface Circle1 {
+                kind: "circle";
+                radius: number;
+            }
+
+            interface Square1 {
+                kind: "square";
+                sideLength: number;
+            }
+
+            function calculateArea(shape: Circle1 | Square1){
+                switch(shape.kind){
+                case "circle":
+                    return Math.PI * shape.radius ** 2;
+                case "square": 
+                    return shape.sideLength ** 2;
+                }
+            }
+            const circle: Circle1 = {
+                kind: "circle",
+                radius: 5
+            };
+
+            const square: Square1 = {
+                kind: "square",
+                sideLength: 4
+            };
+
+                console.log(`Circle area: ${calculateArea(circle).toFixed(2)}`);
+                console.log(`Square area: ${calculateArea(square)}`);
+
+
+            // In operator
+            interface Dog {
+                bark(): void;
+            }
+            interface Cat {
+                meow(): void;
+            }
+
+            function makeSound(animal: Dog | Cat) {
+                if ("bark" in animal) {
+                    // TypeScript knows animal is Dog here
+                    animal.bark();
+                } else {
+                    // TypeScript knows animal is Cat here
+                    animal.meow();
+                }
+            }
+
+
+        // Assertion functions
+            // Type assertion function
+                function assertIsString(value: unknown): asserts value is string {
+                if (typeof value !== 'string') {
+                    throw new Error('Value is not a string');
+                }
+                }
+
+                // Type assertion function with custom error
+                function assert(condition: unknown, message: string): asserts condition {
+                if (!condition) {
+                    throw new Error(message);
+                }
+                }
+
+                // Usage
+                function processInput(input: unknown) {
+                assertIsString(input);
+                // input is now typed as string
+                console.log(input.toUpperCase());
+                }
+
+                // With custom error
+                function processNumber(value: unknown): number {
+                assert(typeof value === 'number', 'Value must be a number');
+                // value is now typed as number
+                return value * 2;
+                }
+
+           // When to Use Each Type Guard
+                // Use typeof for primitive types (string, number, boolean, etc.)
+                // Use instanceof for class instances and built-in objects
+                // Use user-defined type guards for complex validation logic
+                // Use discriminated unions for related types with a common discriminant
+                // Use the in operator for checking property existence
+                // Use type assertion functions for runtime validation with errors
+                // Performance Considerations
+                // typeof and instanceof are very fast
+                // Avoid complex logic in user-defined type guards when performance is critical
+                // Consider using type predicates for expensive checks that are used multiple times
+
+        // Conditional types
+            // Basic conditional type
+                // Conditional types use the form T extends U ? X : Y, which means:
+                // "if type T extends (or is assignable to) type U, use type X, otherwise use type Y".
+                const checkIfString = (value: unknown)=>{
+                    return typeof value==="string" ? true : false;
+                }
+                console.log("Is 'hello' a string?", checkIfString("hello"));
+                console.log("Is 42 a string?", checkIfString(42));
+
+            // Conditional types with unions
+            // Infer
+                //The infer keyword allows you to declare a type variable within the condition part of a conditional type and then use it in the true branch of the condition
+            // Conditional libary stuff
+                // Extract<T, U> - Extracts types from T that are assignable to U
+                    // type OnlyStrings = Extract<string | number | boolean, string>; // string
+
+                // Exclude<T, U> - Excludes types from T that are assignable to U
+                    //  type NoStrings = Exclude<string | number | boolean, string>; // number | boolean
+
+                // NonNullable<T> - Removes null and undefined from T
+                    // type NotNull = NonNullable<string | null | undefined>; // string
+
+                // Parameters<T> - Extracts parameter types from a function type
+                    // type Params = Parameters<(a: string, b: number) => void>; // [string, number]
+
+                // ReturnType<T> - Extracts the return type from a function type
+                    // type Return = ReturnType<() => string>; // string
+
+        // Mapped types
+            interface Person856 {
+                name: string;
+                age: number;
+                email: string;
+            }
+
+            // Create a mapped type that makes all properties optional
+            type PartialPerson856 = {
+                [P in keyof Person856]?: Person856[P];
+            };
+
+            // Usage
+            const partialPerson: PartialPerson856 = {
+                name: "John"
+                // age and email are optional
+            };
+
+            // Create a mapped type that makes all properties readonly
+            type ReadonlyPerson = {
+                readonly [P in keyof Person]: Person[P];
+            };
+
+            // Built-in Mapped Types
+                    //Standard Library Utilities
+                        // TypeScript includes several useful built-in mapped types:
+                            // Partial<T>: make all props optional
+                            // Readonly<T>: make all props readonly
+                            // Pick<T, K>: select a subset of keys
+                            // Omit<T, K>: remove keys
+                            // Record<K, V>: map keys to a value type
+
+        // Literal types
+            // Do's and Don'ts
+            // Do:
+                // Use literal types for fixed sets of values (enums, configuration options)
+                // Combine with union types for better type safety
+                // Use template literal types for string pattern matching
+                // Leverage type inference when possible
+                // Document the meaning of literal types
+            // Don't:
+                // Overuse literal types when a more general type would be better
+                // Create extremely large union types that hurt performance
+                // Use string literals when an enum would be more appropriate
+                // Performance Considerations
+                // Type Checking Performance
+                // Large union types can slow down type checking
+                // Complex template literal types can increase compilation time
+                // Consider using type aliases for complex literal types
+                // Be mindful of TypeScript's recursion depth limits
         
+        // Namespaces
+            // For using stuff in other files (import/export)
+
+        // Index signatures
+            // Basic can use readonly
+                interface StringDictionary {
+                    [key: string]: string;
+                }
+
+                const name: StringDictionary = {
+                    firstname: "Alice",
+                    lastname: "Allison",
+                    "100": "One hundred"
+                }
+                console.log(name["firstName"]);
+
+            // Do's and Don'ts
+                // Do:
+                   // !!!!! INDEX SIGNITURES WITH APIS !!!!!
+                   // Use index signatures for collections with dynamic keys
+                   // Combine with explicit properties for known fields
+                   // Keep value types specific (avoid any)
+                   // Use readonly when mutation isn't needed
+                // Don't:
+                   // Prefer fixed interfaces when keys are known
+                   // Forget that all properties must conform to the index signature type
+                   // Reinvent mapped types-use the dedicated page for transformations
+        
+        // Declaration merging
+            // Can merge interfaces
+            // Can merge class with interface
+            // Can merge enums
+
+            // Best Practices
+                // There are some rules to consider when using declaration merging:
+                    // Order matters for function overloads: The implementation signature should be the most general
+                    // Non-function members must be compatible: If two interfaces declare a property with the same name, the types must be identical or compatible
+                    // Later interfaces take precedence: If conflicts exist in merged interfaces, the last declaration wins
+                    // Private and protected members: Classes can't merge if they have private or protected members with the same name but different types
+                    // Namespace exports: Only exported declarations are visible outside the namespace after merging
+                // Performance Considerations
+                    // Compilation Time: Excessive declaration merging can increase compilation time
+                    // Type Checking: Complex merged types may impact IDE performance
+                    // Bundle Size: Declaration merging doesn't affect runtime performance or bundle size
+                // Optimization Tips:
+                    // Keep merged interfaces focused and cohesive
+                    // Avoid deep nesting in merged types
+                    // Use type aliases for simple type combinations instead of merging
+
+        // Async programming
+            // Remeber for promises - Promise(accept function, reject function)
+                interface Product {
+                    id: number;
+                    name: string;
+                    price: number;
+                }
+
+                async function fetchProduct(id: number): Promise<Product> {
+                    console.log(`Fetching product ${id}...`);
+                    await new Promise(resolve => setTimeout(resolve, Math.random() * 1000));
+                    return { id, name: `Product ${id}`, price: Math.floor(Math.random() * 100) };
+                }
+
+                async function fetchMultipleProducts() {
+                    try {
+                        // Start all fetches in parallel
+                        const [product1, product2, product3] = await Promise.all([
+                            fetchProduct(1),
+                            fetchProduct(2),
+                            fetchProduct(3),
+                        ]);
+
+                        const total = [product1, product2, product3]
+                        .reduce((sum, product) => sum + product.price, 0);
+
+                        console.log(`Total price: $${total.toFixed(2)}`);
+                    } catch (error) {
+                        console.error("Error fetching products:", error);
+                    }
+                }
+
+                    fetchMultipleProducts();
+
+               // Promise Combination Methods
+                    // Promise.all() - Waits for all promises to resolve
+                    // Promise.race() - Returns the first settled promise
+                    // Promise.allSettled() - Waits for all to settle (success or failure)
+                    // Promise.any() - Returns the first fulfilled promise
+
+                // Error Handling Strategies
+                    // Try/Catch Blocks: For handling errors in async/await
+                    // Error Boundaries: For React components
+                    // Result Types: Functional approach with success/failure
+                    // Error Subclassing: For domain-specific errors
+        
+        // Decorators
+            // Decorators are @ functions used to add metadata or behavior to classes, methods, or properties.
+            // Decorators usually run when the class is created/defined, not every time you use the class.
+
+            //They provide extra behavior or metadata, like saying “this class is a controller,” “this method handles GET requests,” 
+            //“log this method,” or “this property is required.”
+
+        // Best practices
+            // - Project Configuration — Turn on strict TypeScript settings so TypeScript catches more mistakes before your code runs. This usually starts with "strict": true in tsconfig.json.
+            // - Type System Best Practices — Let TypeScript infer obvious types, but write clear types for function parameters and important public code. Avoid any because it removes TypeScript’s safety.
+            // - Code Organization — Split code into clear files, like model/type files, service files, component files, and test files. Use consistent file naming so the project is easier to navigate.
+            // - Best Practices — Document important types, prefer composition over inheritance, and make your types more specific as your project grows. The idea is to keep the code easier to understand and safer over time.
+            // - Functions and Methods — Give function parameters and return values proper types, especially when the function is important. Keep functions focused instead of making one function do too many different jobs.
+            // - Async/Await Patterns — Use try/catch for async errors, check failed HTTP responses, and use Promise.all when independent async tasks can run together. Keep async code flat instead of deeply nested.
+            // - Testing and Quality — Write code in a way that is easy to test, like passing dependencies in instead of creating them directly inside a class. You can also test TypeScript types using tools like @ts-expect-error or type-testing utilities.
+            // - Performance Considerations — Use import type when importing only types, and avoid overly complex types that slow down TypeScript. Use as const when you want TypeScript to remember exact literal values.
+            // - Common Mistakes to Avoid — Do not overuse any, do not turn off strict mode, and do not ignore null/undefined problems. Use type guards, optional chaining, and nullish coalescing to make code safer
